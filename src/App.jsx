@@ -14,13 +14,14 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [yearRange, setYearRange] = useState({ min: 1990, max: 2026 });
+  const [minRating, setMinRating] = useState(0);
 
   const getRandomMovie = async () => {
     setLoading(true);
     setError("");
 
     try {
-      const randomMovie = await fetchRandomMovie(selectedGenre, yearRange);
+      const randomMovie = await fetchRandomMovie(selectedGenre, yearRange , minRating);
       setMovie(randomMovie);
     } catch (err) {
       setError(err.message || "Failed to fetch movie. Please try again.");
@@ -66,6 +67,8 @@ function App() {
               setSelectedGenre={setSelectedGenre}
               yearRange={yearRange}
               setYearRange={setYearRange}
+              minRating={minRating}
+              setMinRating={setMinRating}
               onGenerate={getRandomMovie}
               loading={loading}
             />

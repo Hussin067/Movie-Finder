@@ -2,7 +2,7 @@ export function YearRangePicker({ yearRange, setYearRange, darkMode }) {
   const currentYear = 2026;
   const startYear = 1900;
 
-  // Generate array of years
+
   const years = [];
   for (let year = currentYear; year >= startYear; year--) {
     years.push(year);
@@ -10,7 +10,7 @@ export function YearRangePicker({ yearRange, setYearRange, darkMode }) {
 
   return (
     <div className="grid grid-cols-2 gap-3">
-      {/* Start Year */}
+      
       <div>
         <label className={`text-xs mb-1 block ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
           Start Year
@@ -39,7 +39,7 @@ export function YearRangePicker({ yearRange, setYearRange, darkMode }) {
         </select>
       </div>
 
-      {/* End Year */}
+      
       <div>
         <label className={`text-xs mb-1 block ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
           End Year
