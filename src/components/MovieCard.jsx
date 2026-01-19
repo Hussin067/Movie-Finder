@@ -14,15 +14,15 @@ function MovieCard({
       className={`${darkMode ? "bg-gray-800" : "bg-white"} rounded-lg shadow-xl overflow-hidden`}
     >
       <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-1/3">
+        <div className="w-full md:w-1/3 flex-shrink-0">
           {movie.poster_path ? (
             <img
               src={`${IMAGE_BASE}${movie.poster_path}`}
               alt={movie.title}
-              className="w-full h-64 md:h-full object-cover"
+              className="w-full h-[400px] md:h-full object-cover object-center"
             />
           ) : (
-            <div className="w-full h-64 md:h-96 bg-gray-300 flex items-center justify-center">
+            <div className="w-full h-[400px] md:h-96 bg-gray-300 flex items-center justify-center">
               <Film className="w-16 h-16 md:w-20 md:h-20 text-gray-400" />
             </div>
           )}
@@ -41,7 +41,7 @@ function MovieCard({
           </div>
 
           <p
-            className={`mb-4 sm:mb-6 text-sm sm:text-base ${darkMode ? "text-gray-300" : "text-gray-700"}`}
+            className={`mb-4 sm:mb-6 text-sm sm:text-base line-clamp-4 md:line-clamp-none ${darkMode ? "text-gray-300" : "text-gray-700"}`}
           >
             {movie.overview || "No overview available."}
           </p>
