@@ -11,10 +11,28 @@ function App() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [watchlist, setWatchlist] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [yearRange, setYearRange] = useState({ min: 1990, max: 2026 });
   const [minRating, setMinRating] = useState(0);
+
+
+  const [watchlist, setWatchlist] = useState(() => {
+    try {
+      const savedWatchlist = localStorage.getItem('movieWatchlist');
+      return savedWatchlist ? JSON.parse(savedWatchlist) : [];
+    } catch (error) {
+      console.error('Error loading watchlist:', error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('movieWatchlist', JSON.stringify(watchlist));
+    } catch (error) {
+      console.error('Error saving watchlist:', error);
+    }
+  }, [watchlist]);
 
   const getRandomMovie = async () => {
     setLoading(true);
