@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import FilterPanel from "./components/FilterPanel";
 import MovieCard from "./components/MovieCard";
@@ -135,6 +136,7 @@ function App() {
           />
         )}
       </main>
+      <Analytics />
     </div>
   );
 }
